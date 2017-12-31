@@ -43,7 +43,9 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gameSegue" {
             if let destVC = segue.destination as? GameViewController {
-                destVC.totalSecondsRemaining = minutesToPlay * 60
+                let gameState = GameState(totalSecondsRemaining: minutesToPlay * 60)
+//                let gameState = GameState(totalSecondsRemaining: 5)
+                destVC.gameState = gameState
             }
         }
     }

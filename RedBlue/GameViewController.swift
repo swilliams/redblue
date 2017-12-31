@@ -12,6 +12,32 @@ enum ActiveSide {
     case None, Left, Right
 }
 
+func buildTimeTextForSeconds(numberOfSeconds: Int) -> String {
+    let minutesRemaining: Int = numberOfSeconds / 60
+    let secondsRemaining = numberOfSeconds % 60
+    let secondsTextRemaining = secondsRemaining < 10 ? "0\(secondsRemaining)" : "\(secondsRemaining)"
+    return "\(minutesRemaining):\(secondsTextRemaining)"
+}
+
+struct GameState {
+    var totalSecondsRemaining: Int
+    var leftSecondsTotal: Int = 0
+    var rightSecondsTotal: Int = 0
+    
+    init() {
+        self.totalSecondsRemaining = 10
+    }
+    
+    init(totalSecondsRemaining: Int) {
+        self.totalSecondsRemaining = totalSecondsRemaining
+    }
+    
+    mutating func reset() {
+        leftSecondsTotal = 0
+        rightSecondsTotal = 0
+    }
+}
+
 class GameViewController: UIViewController {
     @IBOutlet weak var leftSideButton: UIButton!
     @IBOutlet weak var rightSideButton: UIButton!
@@ -19,9 +45,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var rightTimeLabel: UILabel!
     @IBOutlet weak var mainTimeLabel: UILabel!
     
-    var totalSecondsRemaining: Int = 10
-    var leftSecondsTotal: Int = 0
-    var rightSecondsTotal: Int = 0
+    var gameState = GameState()
     
     var activeSide: ActiveSide = .None
     
@@ -44,30 +68,23 @@ class GameViewController: UIViewController {
     }
     
     private func tick() {
-        if (totalSecondsRemaining <= 0) {
+        if (gameState.totalSecondsRemaining <= 0) {
             end()
             return
         }
-        totalSecondsRemaining -= 1
+        gameState.totalSecondsRemaining -= 1
         if (self.activeSide == .Left) {
-            leftSecondsTotal += 1
+            gameState.leftSecondsTotal += 1
         } else if (self.activeSide == .Right) {
-            rightSecondsTotal += 1
+            gameState.rightSecondsTotal += 1
         }
         updateUI()
     }
     
-    private func buildTimeTextForSeconds(numberOfSeconds: Int) -> String {
-        let minutesRemaining: Int = numberOfSeconds / 60
-        let secondsRemaining = numberOfSeconds % 60
-        let secondsTextRemaining = secondsRemaining < 10 ? "0\(secondsRemaining)" : "\(secondsRemaining)"
-        return "\(minutesRemaining):\(secondsTextRemaining)"
-    }
-    
     private func updateUI() {
-        mainTimeLabel.text = buildTimeTextForSeconds(numberOfSeconds: totalSecondsRemaining)
-        leftTimeLabel.text = buildTimeTextForSeconds(numberOfSeconds: leftSecondsTotal)
-        rightTimeLabel.text = buildTimeTextForSeconds(numberOfSeconds: rightSecondsTotal)
+        mainTimeLabel.text = buildTimeTextForSeconds(numberOfSeconds: gameState.totalSecondsRemaining)
+        leftTimeLabel.text = buildTimeTextForSeconds(numberOfSeconds: gameState.leftSecondsTotal)
+        rightTimeLabel.text = buildTimeTextForSeconds(numberOfSeconds: gameState.rightSecondsTotal)
     }
     
     private func end() {
@@ -79,25 +96,15 @@ class GameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "endSegue" {
             if let destVC = segue.destination as? EndViewController {
-                if leftSecondsTotal > rightSecondsTotal {
-                    destVC.winText = "Red Wins"
-                } else if (leftSecondsTotal == rightSecondsTotal) {
-                    destVC.winText = "Tie"
-                } else {
-                    destVC.winText = "Blue Wins"
-                }
+                destVC.gameState = gameState
             }
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        gameState.reset()
         activeSide = .None
-        leftSecondsTotal = 0
-        rightSecondsTotal = 0
         leftSideButton.backgroundColor = UIColor.red
         rightSideButton.backgroundColor = UIColor.blue
         
@@ -112,16 +119,4 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

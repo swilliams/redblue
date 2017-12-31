@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -191,18 +192,36 @@
                                     <segue destination="wFp-fP-ohf" kind="unwind" unwindAction="unwindToStartWithSegue:" id="XQE-hh-fRf"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue: X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUk-wV-y4K">
+                                <rect key="frame" x="354" y="568.5" width="61.5" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red: X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTD-Cl-oft">
+                                <rect key="frame" x="356" y="433" width="57.5" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ww7-1R-az7" firstAttribute="top" secondItem="eTD-Cl-oft" secondAttribute="bottom" constant="40" id="68s-3f-5ZW"/>
                             <constraint firstItem="HQD-mr-M1y" firstAttribute="bottom" secondItem="jTh-iM-gnx" secondAttribute="bottom" constant="20" id="6HY-7H-96Q"/>
+                            <constraint firstItem="eTD-Cl-oft" firstAttribute="centerX" secondItem="ww7-1R-az7" secondAttribute="centerX" id="7YM-cF-6Da"/>
                             <constraint firstItem="jTh-iM-gnx" firstAttribute="leading" secondItem="HQD-mr-M1y" secondAttribute="leading" constant="20" id="PZX-cB-pee"/>
                             <constraint firstItem="ww7-1R-az7" firstAttribute="centerY" secondItem="7GC-Xr-CpX" secondAttribute="centerY" id="hpF-Ja-BU0"/>
                             <constraint firstItem="HQD-mr-M1y" firstAttribute="trailing" secondItem="jTh-iM-gnx" secondAttribute="trailing" constant="20" id="l4R-BZ-fFw"/>
+                            <constraint firstItem="vUk-wV-y4K" firstAttribute="centerX" secondItem="ww7-1R-az7" secondAttribute="centerX" id="r58-YY-B70"/>
                             <constraint firstItem="ww7-1R-az7" firstAttribute="centerX" secondItem="jTh-iM-gnx" secondAttribute="centerX" id="uqT-su-tUn"/>
+                            <constraint firstItem="vUk-wV-y4K" firstAttribute="top" secondItem="ww7-1R-az7" secondAttribute="bottom" constant="40" id="vap-bw-3ee"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HQD-mr-M1y"/>
                     </view>
                     <connections>
+                        <outlet property="blueResultsLabel" destination="vUk-wV-y4K" id="9c3-xE-rOk"/>
+                        <outlet property="redResultsLabel" destination="eTD-Cl-oft" id="Qd5-iT-W5z"/>
                         <outlet property="winLabel" destination="ww7-1R-az7" id="8dt-5H-E9D"/>
                     </connections>
                 </viewController>
