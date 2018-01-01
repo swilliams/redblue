@@ -67,6 +67,10 @@ class GameViewController: UIViewController {
         activeSide = .Right
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     private func tick() {
         if (gameState.totalSecondsRemaining <= 0) {
             end()
@@ -113,10 +117,5 @@ class GameViewController: UIViewController {
         })
         effectsPlayer.playSoundEffect(effect: .Start)
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
