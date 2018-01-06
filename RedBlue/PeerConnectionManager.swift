@@ -64,7 +64,7 @@ enum GameMessage: String {
 
 protocol GameCommunicationManagerDelegate {
     func connectedDevicesChanged(manager: GameCommunicationManager, connectedDevices: [String])
-    func messageSent(manager: GameCommunicationManager, message: GameMessage)
+    func messageReceived(manager: GameCommunicationManager, message: GameMessage)
 }
 
 extension GameCommunicationManager : MCNearbyServiceAdvertiserDelegate {
@@ -103,7 +103,7 @@ extension GameCommunicationManager: MCSessionDelegate {
         NSLog("%@", "didReceiveData: \(data)")
         guard let s = String(data: data, encoding: .utf8),
               let message = GameMessage(rawValue: s) else { return }
-        delegate?.messageSent(manager: self, message: message)
+        delegate?.messageReceived(manager: self, message: message)
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {

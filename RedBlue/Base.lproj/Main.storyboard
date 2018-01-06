@@ -69,19 +69,9 @@
 </string>
                                 </state>
                                 <connections>
-                                    <segue destination="3Id-g3-m6F" kind="show" identifier="gameSegue" id="fRx-1p-toN"/>
+                                    <action selector="startTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sJI-sV-V3y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-QW-JSz">
-                                <rect key="frame" x="248.5" y="572" width="272" height="145"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="145" id="NCX-uv-kDj"/>
-                                    <constraint firstAttribute="width" constant="272" id="nKg-cK-mGU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -95,15 +85,13 @@
                             <constraint firstItem="BgK-gQ-c3K" firstAttribute="centerY" secondItem="qi1-in-9Ux" secondAttribute="centerY" id="aDX-cV-XCk"/>
                             <constraint firstItem="JPC-UQ-Hue" firstAttribute="centerY" secondItem="BgK-gQ-c3K" secondAttribute="centerY" id="cDE-9u-Xw6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hlb-bH-yXs" secondAttribute="trailing" constant="20" id="cJC-We-6NY"/>
-                            <constraint firstItem="vBI-QW-JSz" firstAttribute="top" secondItem="BgK-gQ-c3K" secondAttribute="bottom" constant="34" id="p2k-3T-mVN"/>
                             <constraint firstItem="JPC-UQ-Hue" firstAttribute="leading" secondItem="BgK-gQ-c3K" secondAttribute="trailing" constant="40" id="tqv-Sg-wMk"/>
-                            <constraint firstItem="vBI-QW-JSz" firstAttribute="centerX" secondItem="BgK-gQ-c3K" secondAttribute="centerX" id="wCP-c8-4kA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="minutesLabel" destination="BgK-gQ-c3K" id="fCE-xm-BZT"/>
-                        <outlet property="statusLabel" destination="vBI-QW-JSz" id="yWZ-eb-RDB"/>
+                        <segue destination="3Id-g3-m6F" kind="show" identifier="gameSegue" id="Feg-DI-EY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

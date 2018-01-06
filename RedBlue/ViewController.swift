@@ -27,6 +27,11 @@ class ViewController: UIViewController {
         updateLabel()
     }
     
+    @IBAction func startTapped(_ sender: Any) {
+        performSegue(withIdentifier: "gameSegue", sender: nil)
+        peerConnectionService.sendGameMessage(message: .Start)
+    }
+    
     @IBAction func unwindToStart(segue: UIStoryboardSegue) {
     }
     
@@ -40,7 +45,6 @@ class ViewController: UIViewController {
                 let gameState = GameState(totalSecondsRemaining: minutesToPlay * 60)
 //                let gameState = GameState(totalSecondsRemaining: 5)
                 destVC.gameState = gameState
-                peerConnectionService.sendGameMessage(message: .Start)
             }
         }
     }
@@ -49,8 +53,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         peerConnectionService.delegate = self
     }
-    
-    @IBOutlet weak var statusLabel: UILabel!
 }
 
 extension ViewController: GameCommunicationManagerDelegate {
@@ -58,10 +60,10 @@ extension ViewController: GameCommunicationManagerDelegate {
         print("devices changed")
     }
     
-    func messageSent(manager: GameCommunicationManager, message: GameMessage) {
+    func messageReceived(manager: GameCommunicationManager, message: GameMessage) {
         print("received message \(message.rawValue)")
         OperationQueue.main.addOperation {
-            self.statusLabel.text = message.rawValue
+            self.performSegue(withIdentifier: "gameSegue", sender: nil)
         }
     }
 }
