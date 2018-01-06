@@ -27,6 +27,9 @@ class ViewController: UIViewController {
         updateLabel()
     }
     
+    @IBAction func unwindToStart(segue: UIStoryboardSegue) {
+    }
+    
     private func updateLabel() {
         minutesLabel.text = "\(minutesToPlay)"
     }
@@ -37,11 +40,29 @@ class ViewController: UIViewController {
                 let gameState = GameState(totalSecondsRemaining: minutesToPlay * 60)
 //                let gameState = GameState(totalSecondsRemaining: 5)
                 destVC.gameState = gameState
+                peerConnectionService.sendGameMessage(message: .Start)
             }
         }
     }
 
-    @IBAction func unwindToStart(segue: UIStoryboardSegue) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        peerConnectionService.delegate = self
+    }
+    
+    @IBOutlet weak var statusLabel: UILabel!
+}
+
+extension ViewController: GameCommunicationManagerDelegate {
+    func connectedDevicesChanged(manager: GameCommunicationManager, connectedDevices: [String]) {
+        print("devices changed")
+    }
+    
+    func messageSent(manager: GameCommunicationManager, message: GameMessage) {
+        print("received message \(message.rawValue)")
+        OperationQueue.main.addOperation {
+            self.statusLabel.text = message.rawValue
+        }
     }
 }
 
