@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     private var minutesToPlay = 5
+    let peerConnectionService = GameCommunicationManager()
     
     @IBOutlet weak var minutesLabel: UILabel!
     

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A722B9AB20016EB0002DA2E1 /* PeerConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722B9AA20016EB0002DA2E1 /* PeerConnectionManager.swift */; };
+		A722B9AC20016EB0002DA2E1 /* PeerConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722B9AA20016EB0002DA2E1 /* PeerConnectionManager.swift */; };
+		A722B9AD20016EB0002DA2E1 /* PeerConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722B9AA20016EB0002DA2E1 /* PeerConnectionManager.swift */; };
 		A7F5AA971FF8223F00921D5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5AA961FF8223F00921D5B /* AppDelegate.swift */; };
 		A7F5AA991FF8223F00921D5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5AA981FF8223F00921D5B /* ViewController.swift */; };
 		A7F5AA9C1FF8223F00921D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F5AA9A1FF8223F00921D5B /* Main.storyboard */; };
@@ -47,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A722B9AA20016EB0002DA2E1 /* PeerConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerConnectionManager.swift; sourceTree = "<group>"; };
 		A7F5AA931FF8223F00921D5B /* RedBlue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedBlue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F5AA961FF8223F00921D5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F5AA981FF8223F00921D5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 				A7F5AACC1FF83EFC00921D5B /* audio */,
 				A7F5AA961FF8223F00921D5B /* AppDelegate.swift */,
 				A7F5AA981FF8223F00921D5B /* ViewController.swift */,
+				A722B9AA20016EB0002DA2E1 /* PeerConnectionManager.swift */,
 				A7F5AAD11FF83F4900921D5B /* AudioPlayer.swift */,
 				A7F5AAC41FF826F600921D5B /* GameViewController.swift */,
 				A7F5AA9A1FF8223F00921D5B /* Main.storyboard */,
@@ -299,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F5AAC91FF8366300921D5B /* EndViewController.swift in Sources */,
+				A722B9AB20016EB0002DA2E1 /* PeerConnectionManager.swift in Sources */,
 				A7F5AA991FF8223F00921D5B /* ViewController.swift in Sources */,
 				A7F5AAD21FF83F4900921D5B /* AudioPlayer.swift in Sources */,
 				A7F5AAC51FF826F600921D5B /* GameViewController.swift in Sources */,
@@ -314,6 +320,7 @@
 				A7F5AAC61FF826F600921D5B /* GameViewController.swift in Sources */,
 				A7F5AAAC1FF8223F00921D5B /* RedBlueTests.swift in Sources */,
 				A7F5AAD31FF83F4900921D5B /* AudioPlayer.swift in Sources */,
+				A722B9AC20016EB0002DA2E1 /* PeerConnectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +332,7 @@
 				A7F5AAC71FF826F600921D5B /* GameViewController.swift in Sources */,
 				A7F5AAB71FF8223F00921D5B /* RedBlueUITests.swift in Sources */,
 				A7F5AAD41FF83F4900921D5B /* AudioPlayer.swift in Sources */,
+				A722B9AD20016EB0002DA2E1 /* PeerConnectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
